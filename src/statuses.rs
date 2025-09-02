@@ -61,7 +61,7 @@ pub struct Status {
     pub updated_at: Option<String>,
     pub state: State,
     pub target_url: Option<String>,
-    pub description: String,
+    pub description: Option<String>,
     pub id: u64,
     pub url: String,
     pub context: String,
