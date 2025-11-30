@@ -255,7 +255,7 @@ impl<'de> Deserialize<'de> for DecodedContents {
                 let v = v.replace("\n", "");
 
                 let decoded = STANDARD.decode(&v).map_err(|e| match e {
-                    base64::DecodeError::InvalidLength => {
+                    base64::DecodeError::InvalidLength(_) => {
                         E::invalid_length(v.len(), &"invalid base64 length")
                     }
                     base64::DecodeError::InvalidPadding => {

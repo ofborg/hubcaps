@@ -1,3 +1,4 @@
+use futures::StreamExt;
 use hubcaps::{Credentials, Github};
 use std::env;
 use std::error::Error;
@@ -10,14 +11,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
         concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION")),
         Credentials::Token(token),
     )?;
-    for diff in github
+    let mut files = github
         .repo("rust-lang", "rust")
         .pulls()
         .get(49536)
-        .files()
-        .await?
-    {
-        println!("{:#?}", diff);
+        .iter_files();
+    while let Some(diff) = files.next().await {
+        println!("{:#?}", diff?);
     }
     Ok(())
 }

@@ -18,7 +18,7 @@ mod testkit;
 fn compare_counts() -> Result<()> {
     pretty_env_logger::init();
 
-    let mut rt = Runtime::new()?;
+    let rt = Runtime::new()?;
 
     let agent = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"));
     let credentials = match env::var("GITHUB_TOKEN").ok() {

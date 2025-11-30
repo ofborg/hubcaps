@@ -266,11 +266,11 @@ impl ThreadListOptionsBuilder {
 
 #[derive(Debug, Deserialize)]
 pub struct Subject {
-    title: String,
-    url: String,
-    latest_comment_url: String,
+    pub title: String,
+    pub url: String,
+    pub latest_comment_url: String,
     #[serde(rename = "type")]
-    kind: String,
+    pub kind: String,
 }
 
 #[derive(Debug, Deserialize)]

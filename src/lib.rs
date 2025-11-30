@@ -334,7 +334,7 @@ impl Github {
                 agent,
                 credentials,
                 http,
-                HttpCache::noop(),
+                <dyn HttpCache>::noop(),
             ))
         }
         #[cfg(not(feature = "httpcache"))]
