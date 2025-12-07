@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         let host = "https://api.github.com";
         let agent = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"));
         let client = Client::builder().build()?;
-        let http_cache = HttpCache::in_home_dir();
+        let http_cache = <dyn HttpCache>::in_home_dir();
         let github = Github::custom(host, agent, None, client, http_cache);
 
         let _repos = github

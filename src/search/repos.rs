@@ -203,8 +203,8 @@ pub struct ReposItem {
 
 #[derive(Debug, Deserialize)]
 pub struct License {
-    key: String,
-    name: String,
-    spdx_id: String,
-    url: String,
+    pub key: String,
+    pub name: String,
+    pub spdx_id: String,
+    pub url: String,
 }
