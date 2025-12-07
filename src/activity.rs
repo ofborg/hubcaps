@@ -1,8 +1,8 @@
 //! Activity interface
+use crate::Github;
 use crate::notifications::Notifications;
 use crate::stars::Stars;
 use crate::watching::Watching;
-use crate::Github;
 
 pub struct Activity {
     github: Github,

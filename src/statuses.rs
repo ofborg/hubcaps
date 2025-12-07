@@ -150,10 +150,11 @@ impl StatusOptions {
     }
 }
 
-#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize, Default)]
 pub enum State {
     /// pending
     #[serde(rename = "pending")]
+    #[default]
     Pending,
     /// success
     #[serde(rename = "success")]
@@ -164,12 +165,6 @@ pub enum State {
     /// failure
     #[serde(rename = "failure")]
     Failure,
-}
-
-impl Default for State {
-    fn default() -> State {
-        State::Pending
-    }
 }
 
 #[cfg(test)]
@@ -186,7 +181,7 @@ mod tests {
 
     #[test]
     fn deserialize_status_state() {
-        for (json, value) in vec![
+        for (json, value) in [
             ("\"pending\"", State::Pending),
             ("\"success\"", State::Success),
             ("\"error\"", State::Error),
@@ -198,7 +193,7 @@ mod tests {
 
     #[test]
     fn serialize_status_state() {
-        for (json, value) in vec![
+        for (json, value) in [
             ("\"pending\"", State::Pending),
             ("\"success\"", State::Success),
             ("\"error\"", State::Error),

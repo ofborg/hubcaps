@@ -4,9 +4,9 @@ use std::collections::HashMap;
 use serde::Deserialize;
 use url::form_urlencoded;
 
-use crate::users::User;
 use crate::Future;
 use crate::Github;
+use crate::users::User;
 
 /// Provides access to notifications.
 /// See the [github docs](https://developer.github.com/v3/activity/notifications/)

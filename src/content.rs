@@ -7,7 +7,7 @@ use serde::de::{self, Visitor};
 use serde::{Deserialize, Serialize};
 
 use crate::repo_commits::CommitDetails;
-use crate::utils::{percent_encode, PATH};
+use crate::utils::{PATH, percent_encode};
 use crate::{Future, Github, Stream};
 
 /// Provides access to the content information for a repository

@@ -126,9 +126,8 @@ mod tests {
 
     #[test]
     fn deserialize_client_field_errors() {
-        for (json, expect) in vec![
-            // see https://github.com/softprops/hubcaps/issues/31
-            (
+        {
+            let (json, expect) = (
                 r#"{"message": "Validation Failed","errors":
                 [{
                     "resource": "Release",
@@ -150,8 +149,7 @@ mod tests {
                     }]),
                     documentation_url: None,
                 },
-            ),
-        ] {
+            );
             assert_eq!(serde_json::from_str::<ClientError>(json).unwrap(), expect);
         }
     }

@@ -88,16 +88,16 @@ impl InstallationTokenGenerator {
     }
 
     pub(crate) fn token(&self) -> Option<String> {
-        if let crate::Credentials::JWT(ref creds) = *self.jwt_credential {
-            if creds.is_stale() {
-                return None;
-            }
+        if let crate::Credentials::JWT(ref creds) = *self.jwt_credential
+            && creds.is_stale()
+        {
+            return None;
         }
         self.access_key.lock().unwrap().clone()
     }
 
     pub(crate) fn jwt(&self) -> &crate::Credentials {
-        &*self.jwt_credential
+        &self.jwt_credential
     }
 }
 

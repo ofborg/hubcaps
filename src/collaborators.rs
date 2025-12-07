@@ -1,21 +1,16 @@
-use crate::users::User;
 use crate::Future;
+use crate::users::User;
 use crate::{Error, Github};
 use futures::prelude::*;
 use http::StatusCode;
 use std::collections::HashMap;
 use std::fmt;
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub enum Permissions {
     Admin,
+    #[default]
     Push,
     Pull,
-}
-
-impl Default for Permissions {
-    fn default() -> Permissions {
-        Permissions::Push
-    }
 }
 
 impl fmt::Display for Permissions {

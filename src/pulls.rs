@@ -15,9 +15,10 @@ use crate::users::User;
 use crate::{Future, Github, SortDirection, Stream};
 
 /// Sort directions for pull requests
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Default)]
 pub enum Sort {
     /// Sort by time created
+    #[default]
     Created,
     /// Sort by last updated
     Updated,
@@ -36,12 +37,6 @@ impl fmt::Display for Sort {
             Sort::LongRunning => "long-running",
         }
         .fmt(f)
-    }
-}
-
-impl Default for Sort {
-    fn default() -> Sort {
-        Sort::Created
     }
 }
 

@@ -10,20 +10,15 @@ use crate::{Future, Github};
 
 /// Content-Type web hooks will receive
 /// deliveries in
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize, Default)]
 pub enum WebHookContentType {
     /// application/json
     #[serde(rename = "json")]
     Json,
     /// application/x-form-url-encoded
     #[serde(rename = "form")]
+    #[default]
     Form,
-}
-
-impl Default for WebHookContentType {
-    fn default() -> WebHookContentType {
-        WebHookContentType::Form
-    }
 }
 
 impl fmt::Display for WebHookContentType {

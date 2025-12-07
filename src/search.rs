@@ -2,13 +2,13 @@
 use std::collections::HashMap;
 use std::fmt;
 
-use serde::de::DeserializeOwned;
 use serde::Deserialize;
+use serde::de::DeserializeOwned;
 use url::{self, form_urlencoded};
 
 use crate::labels::Label;
 use crate::users::User;
-use crate::{unfold, Future, Github, SortDirection, Stream};
+use crate::{Future, Github, SortDirection, Stream, unfold};
 
 mod repos;
 

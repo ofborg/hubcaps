@@ -86,8 +86,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
         team.remove_user("grahamc").await?
     );
 
-    let deleted_team = team.delete().await?;
-    println!("Deleted team: {:#?}", deleted_team);
+    team.delete().await?;
+    println!("Deleted team: {:#?}", ());
 
     Ok(())
 }

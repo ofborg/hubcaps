@@ -10,7 +10,7 @@ pub struct CheckRuns {
     repo: String,
 }
 
-impl<'a> CheckRuns {
+impl CheckRuns {
     #[doc(hidden)]
     pub(crate) fn new<O, R>(github: Github, owner: O, repo: R) -> Self
     where

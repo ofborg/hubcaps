@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use std::fmt;
 
 use serde::{Deserialize, Serialize};
-use url::{form_urlencoded, Url};
+use url::{Url, form_urlencoded};
 
 use crate::branches::Branches;
 use crate::checks::CheckRuns;

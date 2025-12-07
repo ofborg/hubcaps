@@ -2,8 +2,8 @@
 use futures::prelude::*;
 use http::StatusCode;
 
-use crate::repositories::Repo;
 use crate::Stream;
+use crate::repositories::Repo;
 use crate::{Error, Future, Github};
 
 pub struct Stars {

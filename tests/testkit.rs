@@ -28,9 +28,9 @@ fn test_root() -> PathBuf {
 
     static NEXT_TEST_NUM: AtomicUsize = AtomicUsize::new(0);
     thread_local!(static TEST_NUM: usize = NEXT_TEST_NUM.fetch_add(1, Ordering::SeqCst));
-    let root = root.join(&TEST_NUM.with(|my_id| format!("t{}", my_id)));
+    let root = root.join(TEST_NUM.with(|my_id| format!("t{}", my_id)));
 
-    thread_local!(static TEST_ROOT_INIT: Cell<bool> = Cell::new(false));
+    thread_local!(static TEST_ROOT_INIT: Cell<bool> = const { Cell::new(false) });
     TEST_ROOT_INIT.with(|i| {
         if i.get() {
             return;

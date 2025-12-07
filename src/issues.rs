@@ -8,13 +8,14 @@ use url::form_urlencoded;
 use crate::comments::Comments;
 use crate::labels::Label;
 use crate::users::User;
-use crate::utils::{percent_encode, PATH_SEGMENT};
+use crate::utils::{PATH_SEGMENT, percent_encode};
 use crate::{Future, Github, SortDirection, Stream};
 
 /// enum representation of github pull and issue state
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Default)]
 pub enum State {
     /// Only open issues
+    #[default]
     Open,
     /// Only closed issues
     Closed,
@@ -33,16 +34,11 @@ impl fmt::Display for State {
     }
 }
 
-impl Default for State {
-    fn default() -> State {
-        State::Open
-    }
-}
-
 /// Sort options available for github issues
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Default)]
 pub enum Sort {
     /// sort by creation time of issue
+    #[default]
     Created,
     /// sort by the last time issue was updated
     Updated,
@@ -58,12 +54,6 @@ impl fmt::Display for Sort {
             Sort::Comments => "comments",
         }
         .fmt(f)
-    }
-}
-
-impl Default for Sort {
-    fn default() -> Sort {
-        Sort::Created
     }
 }
 
